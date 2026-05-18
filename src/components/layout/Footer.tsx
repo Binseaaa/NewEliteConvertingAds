@@ -4,7 +4,7 @@ export default function Footer() {
       <div className="font-display text-[1.2rem] tracking-[0.06em]">
         ELITE <span className="text-accent">CONVERTING ADS</span>
       </div>
-      <div className="text-[0.72rem] text-white/20 font-mono">
+      <div className="text-[0.72rem] text-white/60 font-mono">
         © 2026 Elite Converting Ads · All rights reserved
       </div>
     </footer>
