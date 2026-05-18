@@ -207,7 +207,7 @@ export default function OrderForm({ selectedPackage }: Props) {
                   </div>
                 )}
                 <div className="text-white text-sm">Product Image</div>
-                <div className="text-white/60 text-xs mt-1">Drag & drop or click to upload</div>
+                <div className="text-white/60p text-xs mt-1">Drag & drop or click to upload</div>
               </div>
 
               {/* Brand Logo */}
@@ -229,7 +229,7 @@ export default function OrderForm({ selectedPackage }: Props) {
                   </div>
                 )}
                 <div className="text-white text-sm">Brand Logo</div>
-                <div className="text-white/60 text-xs mt-1">Drag & drop or click to upload</div>
+                <div className="text-white/60p text-xs mt-1">Drag & drop or click to upload</div>
               </div>
             </div>
           </div>

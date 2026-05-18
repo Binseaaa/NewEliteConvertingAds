@@ -9,17 +9,24 @@ export default function Packages({ onSelectPackage }: Props) {
   return (
     <section id="packages" className="py-20 md:py-[100px] px-5 md:px-[5%] bg-black">
 
-      <div className="text-center mb-12 md:mb-[60px] max-w-2xl mx-auto">
-        <div className="inline-flex items-center justify-center gap-2 font-mono text-[0.65rem] tracking-[0.2em] uppercase text-accent mb-4">
-          Pricing
-        </div>
-        <h2 className="font-display leading-tight tracking-tight mb-4" style={{ fontSize: 'clamp(2rem, 5vw, 3.6rem)' }}>
+    <div className="text-center mb-12 md:mb-[60px] max-w-2xl mx-auto">
+      <div className="inline-flex items-center justify-center gap-2 font-mono text-[0.65rem] tracking-[0.2em] uppercase text-accent mb-4">
+        Pricing
+      </div>
+
+      <div>
+        <h2
+          className="font-display leading-none tracking-[0.01em] mb-4"
+          style={{ fontSize: 'clamp(2.4rem, 4.5vw, 3.8rem)' }}
+        >
           Simple, Transparent Packages
         </h2>
-        <p className="text-sm md:text-base text-white/50 font-light">
+
+        <p className="text-[1rem] text-white/60 max-w-[480px] font-light mx-auto">
           Pick your format. We'll handle everything else.
         </p>
       </div>
+    </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {PACKAGES.map((pkg) => (

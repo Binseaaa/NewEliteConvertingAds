@@ -29,7 +29,7 @@ const STEPS = [
 
 function Tag({ label }: { label: string }) {
   return (
-    <span className="bg-white/5 border border-white/[0.07] rounded-sm text-[0.68rem] font-mono tracking-[0.08em] px-[10px] py-1 text-white/60 uppercase">
+    <span className="bg-white/5 border border-white/[0.07] text-white/70 rounded-sm text-[0.68rem] font-mono tracking-[0.08em] px-[10px] py-1 uppercase">
       {label}
     </span>
   );
@@ -39,23 +39,30 @@ export default function Process() {
   const titleRef = useReveal();
 
   return (
-    <section id="process" className="py-[100px] px-[5%] bg-black">
+        <section id="process" className="py-[100px] px-[5%] bg-[#101010] text-white">
 
-      {/* Header */}
-      <div className="max-w-2xl mx-auto text-center flex flex-col items-center">
-        <div ref={titleRef as React.RefObject<HTMLDivElement>} className="reveal flex items-center gap-[10px] font-mono text-[0.7rem] tracking-[0.2em] uppercase text-accent mb-4 section-label">
-          Process
-        </div>
-        <h2
-          className="reveal font-display leading-none tracking-[0.01em] mb-4"
-          style={{ fontSize: 'clamp(2.4rem, 4.5vw, 3.8rem)' }}
+        {/* Header */}
+        <div className="max-w-2xl mx-auto text-center flex flex-col items-center">
+        <div
+            ref={titleRef as React.RefObject<HTMLDivElement>}
+            className="reveal flex items-center gap-[10px] font-mono text-[0.7rem] tracking-[0.2em] uppercase text-accent mb-4 section-label"
         >
-          From Scratch to Your<br />Winning Ad in Hours
-        </h2>
-        <p className="reveal text-[1rem] text-white/60 max-w-[480px] font-light">
-          Four simple steps. No back-and-forth, no delays. Just results.
-        </p>
-      </div>
+            Process
+        </div>
+
+        <div>
+            <h2
+            className="font-display leading-none tracking-[0.01em] mb-4"
+            style={{ fontSize: 'clamp(2.4rem, 4.5vw, 3.8rem)' }}
+            >
+            From Scratch to Your<br />Winning Ad in Hours
+            </h2>
+
+            <p className="text-[1rem] text-white/60 max-w-[480px] font-light mx-auto">
+            Four simple steps. No back-andforth, no delays. Just results.
+            </p>
+        </div>
+        </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-[80px] items-start mt-[60px]">
 
@@ -119,17 +126,28 @@ function Step({ step, last }: { step: typeof STEPS[0]; last: boolean }) {
   return (
     <div
       ref={ref as React.RefObject<HTMLDivElement>}
-      className={`reveal flex gap-6 py-8 group ${!last ? 'border-b border-white/[0.07]' : ''}`}
+      className={`reveal flex gap-6 py-8 group ${
+        !last ? 'border-b border-white/[0.07]' : ''
+      }`}
     >
       <div className="font-display text-[3rem] text-accent/15 leading-none flex-shrink-0 w-14 transition-colors duration-300 group-hover:text-accent">
         {step.num}
       </div>
+
       <div>
-        <div className="font-display text-[1.5rem] tracking-[0.03em] mb-2">{step.title}</div>
-        <p className="text-[0.9rem] text-white/60 leading-[1.7] font-light">{step.body}</p>
+        <div className="font-display text-[1.5rem] tracking-[0.03em] mb-2 text-white">
+          {step.title}
+        </div>
+
+        <p className="text-[0.95rem] leading-[1.7] font-light text-white/60 max-w-[560px]">
+          {step.body}
+        </p>
+
         {step.tags.length > 0 && (
-          <div className="flex flex-wrap gap-[6px] mt-3">
-            {step.tags.map((tag) => <Tag key={tag} label={tag} />)}
+          <div className="flex flex-wrap gap-[6px] mt-4">
+            {step.tags.map((tag) => (
+              <Tag key={tag} label={tag} />
+            ))}
           </div>
         )}
       </div>

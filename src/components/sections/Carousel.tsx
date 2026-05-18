@@ -38,9 +38,20 @@ export default function Carousel() {
       vid.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 0.6s ease;';
       vid.autoplay = true;
       vid.muted = true;
-      vid.loop = true;
       vid.preload = 'none';
       vid.setAttribute('playsinline', '');
+
+      const MAX_PREVIEW_TIME = 5;
+
+      function loopPreview() {
+        if (vid.currentTime >= MAX_PREVIEW_TIME) {
+          vid.currentTime = 0;
+          vid.play().catch(() => {});
+        }
+        vid.requestVideoFrameCallback(loopPreview);
+      }
+
+      vid.requestVideoFrameCallback(loopPreview);
       vid.addEventListener('canplay', function (this: HTMLVideoElement) { this.style.opacity = '1'; thumb.style.filter = 'none'; thumb.style.transform = 'none';  }, { once: true });
       div.appendChild(vid);
 
@@ -84,7 +95,9 @@ export default function Carousel() {
           card._loaded = true;
           card._vid.src = card._vidSrc;
           card._vid.load();
-          card._vid.play().catch(() => {});
+          if (cardLeft > 0 && cardLeft < VIEWPORT_W) {
+            card._vid.play().catch(() => {});
+          }
         }
       });
     }
