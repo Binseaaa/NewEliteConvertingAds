@@ -139,6 +139,7 @@ export default function OrderForm({ selectedPackage }: Props) {
               <label className="text-[0.7rem] font-mono tracking-[0.12em] uppercase text-white/45">Ad Format *</label>
               <select
                 required
+                aria-label="Ad Format"
                 value={formData.adFormat}
                 onChange={(e) => updateField('adFormat', e.target.value)}
                 className="cursor-pointer appearance-none bg-[#1a1a1a] border border-white/[0.07] rounded px-3 py-2 text-sm text-white focus:border-accent/50 outline-none"
@@ -155,6 +156,7 @@ export default function OrderForm({ selectedPackage }: Props) {
               <label className="text-[0.7rem] font-mono tracking-[0.12em] uppercase text-white/45">Package *</label>
               <select
                 required
+                aria-label="Package"
                 value={pkgValue}
                 onChange={(e) => updateField('package', e.target.value as PackageId)}
                 className="cursor-pointer appearance-none bg-[#1a1a1a] border border-white/[0.07] rounded px-3 py-2 text-sm text-white focus:border-accent/50 outline-none"
@@ -252,6 +254,7 @@ export default function OrderForm({ selectedPackage }: Props) {
                 </button>
                 {formData.voiceover && (
                   <select
+                    aria-label="Voiceover accent"
                     value={formData.voiceoverAccent}
                     onChange={(e) => updateField('voiceoverAccent', e.target.value as never)}
                     className="w-full bg-[#1a1a1a] border border-white/[0.07] rounded px-3 py-2 font-mono text-[0.72rem] text-white/70 uppercase tracking-[0.06em] focus:border-accent/50 outline-none cursor-pointer"
@@ -279,6 +282,7 @@ export default function OrderForm({ selectedPackage }: Props) {
                 </button>
                 {formData.variations && (
                   <select
+                    aria-label="Number of variations"
                     value={formData.variationsQty}
                     onChange={(e) => updateField('variationsQty', e.target.value as never)}
                     className="w-full bg-[#1a1a1a] border border-white/[0.07] rounded px-3 py-2 font-mono text-[0.72rem] text-white/70 uppercase tracking-[0.06em] focus:border-accent/50 outline-none cursor-pointer"
