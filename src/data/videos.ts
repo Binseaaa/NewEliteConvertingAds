@@ -17,14 +17,6 @@ export const TIKTOK_VIDEOS: VideoItem[] = [
     category: 'tiktok',
   },
   {
-    id: 'mini-shaver',
-    title: 'Mini Shaver',
-    img: 'https://res.cloudinary.com/drmpnuh83/image/upload/Mini_Shaver_ahz0zt.png',
-    src: 'https://res.cloudinary.com/drmpnuh83/video/upload/f_auto,q_auto/Mini_Shaver_mftsiw.mp4',
-    aspect: '9/16',
-    category: 'tiktok',
-  },
-  {
     id: 'ripsurf',
     title: 'RipSurf Skateboard',
     img: 'https://res.cloudinary.com/drmpnuh83/image/upload/surfing_nblxz5.png',
