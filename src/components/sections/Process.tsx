@@ -74,7 +74,7 @@ export default function Process() {
 
             <div className="w-28 h-28 md:w-36 md:h-36 rounded-2xl overflow-hidden bg-black flex items-center justify-center border border-accent/20 shadow-lg">
               <img
-                src="public/ASSETS/processlogo.png"
+                src="https://res.cloudinary.com/drmpnuh83/image/upload/processproduct_cgglxp.png"
                 className="w-full h-full object-contain"
                 alt="Product"
               />
