@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
-import { PAYMENT_INTENT_URL } from '../../lib/stripe';
+// import { PAYMENT_INTENT_URL } from '../../lib/stripe';
 
 const STRIPE_PK =
   (import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY as string) ||
@@ -17,7 +17,7 @@ interface Props {
 }
 
 export default function PaymentModal({
-  total, email, productName, packageLabel, extras, onClose, onSuccess,
+  total, productName, packageLabel, extras, onClose, onSuccess,
 }: Props) {
   const cardNumberRef = useRef<HTMLDivElement>(null);
   const cardExpiryRef = useRef<HTMLDivElement>(null);
