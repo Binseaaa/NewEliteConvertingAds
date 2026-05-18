@@ -74,7 +74,7 @@ export default function Process() {
 
             <div className="w-28 h-28 md:w-36 md:h-36 rounded-2xl overflow-hidden bg-black flex items-center justify-center border border-accent/20 shadow-lg">
               <img
-                src="public\ASSETS\Screenshot 2026-04-23 105311.png"
+                src="public/ASSETS/Screenshot 2026-04-23 105311.png"
                 className="w-full h-full object-contain"
                 alt="Product"
               />
