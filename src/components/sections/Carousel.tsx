@@ -29,9 +29,9 @@ export default function Carousel() {
 
       const thumb = document.createElement('img');
       thumb.src = data.img;
-      thumb.loading = 'lazy';
+      thumb.loading = 'eager';
       thumb.decoding = 'async';
-      thumb.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;';
+      thumb.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;filter:blur(4px);transform:scale(1.05);';
       div.appendChild(thumb);
 
       const vid = document.createElement('video');
@@ -41,7 +41,7 @@ export default function Carousel() {
       vid.loop = true;
       vid.preload = 'none';
       vid.setAttribute('playsinline', '');
-      vid.addEventListener('canplay', function (this: HTMLVideoElement) { this.style.opacity = '1'; }, { once: true });
+      vid.addEventListener('canplay', function (this: HTMLVideoElement) { this.style.opacity = '1'; thumb.style.filter = 'none'; thumb.style.transform = 'none';  }, { once: true });
       div.appendChild(vid);
 
       div._vid = vid;
