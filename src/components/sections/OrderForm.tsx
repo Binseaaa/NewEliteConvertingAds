@@ -199,7 +199,7 @@ export default function OrderForm({ selectedPackage }: Props) {
                   onChange={(e) => handleFileChange(e.target.files?.[0] ?? null, 'productImage')} />
                 {productPreview && (
                   <div className="relative inline-block mb-3">
-                    <img src={productPreview} className="max-h-24 rounded object-contain mx-auto" alt="Product preview" />
+                    <img src={productPreview} alt="Product preview" className="max-h-24 rounded object-contain mx-auto"/>
                     <button type="button" onClick={(e) => { e.stopPropagation(); setProductPreview(null); updateField('productImage', null); if (productImgRef.current) productImgRef.current.value = ''; }}
                       className="absolute top-0 right-0 text-xs bg-black/70 text-white px-2 py-1 rounded hover:bg-red-500 transition">
                       Remove
@@ -221,7 +221,7 @@ export default function OrderForm({ selectedPackage }: Props) {
                   onChange={(e) => handleFileChange(e.target.files?.[0] ?? null, 'brandLogo')} />
                 {logoPreview && (
                   <div className="relative inline-block mb-3">
-                    <img src={logoPreview} className="max-h-16 rounded object-contain mx-auto" alt="Logo preview" />
+                    <img src={logoPreview} alt="Logo preview" className="max-h-16 rounded object-contain mx-auto"/>
                     <button type="button" onClick={(e) => { e.stopPropagation(); setLogoPreview(null); updateField('brandLogo', null); if (logoRef.current) logoRef.current.value = ''; }}
                       className="absolute top-0 right-0 text-xs bg-black/70 text-white px-2 py-1 rounded hover:bg-red-500 transition">
                       Remove

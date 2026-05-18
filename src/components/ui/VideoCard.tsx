@@ -24,13 +24,11 @@ export default function VideoCard({ video }: Props) {
       onClick={toggle}
     >
       {/* Blurred bg */}
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{
-          backgroundImage: `url('${video.img}')`,
-          filter: 'blur(3px)',
-          transform: 'scale(1.05)',
-        }}
+      <img
+        src={video.img}
+        alt={video.title}
+        className="absolute inset-0 w-full h-full object-cover"
+        style={{ filter: 'blur(3px)', transform: 'scale(1.05)' }}
       />
 
       {/* Video */}
