@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
+import { PAYMENT_INTENT_URL } from '../../lib/stripe';
 
 const STRIPE_PK =
   (import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY as string) ||
@@ -16,7 +17,7 @@ interface Props {
 }
 
 export default function PaymentModal({
-  total, productName, packageLabel, extras, onClose, onSuccess,
+  total, email, productName, packageLabel, extras, onClose, onSuccess,
 }: Props) {
   const cardNumberRef = useRef<HTMLDivElement>(null);
   const cardExpiryRef = useRef<HTMLDivElement>(null);
@@ -63,55 +64,55 @@ export default function PaymentModal({
   }, []);
 
   // ── MOCK (for testing Google Sheets / email) ──────────────────
-  const handlePay = async () => {
-    setProcessing(true);
+  // const handlePay = async () => {
+  //   setProcessing(true);
 
-    setTimeout(() => {
-      console.log('Mock payment success');
-      onSuccess(); // triggers SuccessModal + Google Sheets submission
-    }, 1500);
-  };
+  //   setTimeout(() => {
+  //     console.log('Mock payment success');
+  //     onSuccess(); // triggers SuccessModal + Google Sheets submission
+  //   }, 1500);
+  // };
 
   // ── REAL Stripe payment (uncomment when ready for production) ──
-  // const handlePay = async () => {
-  //   const stripe = stripeRef.current;
-  //   const cardEl = cardElRef.current;
-  //   if (!stripe || !cardEl) return;
-  //
-  //   setProcessing(true);
-  //   setCardError('');
-  //
-  //   try {
-  //     const res  = await fetch(PAYMENT_INTENT_URL, {
-  //       method: 'POST',
-  //       headers: { 'Content-Type': 'application/json' },
-  //       body: JSON.stringify({ amount: Math.round(total * 100) }),
-  //     });
-  //     const data = await res.json() as { clientSecret?: string; error?: string };
-  //
-  //     if (!data.clientSecret) throw new Error(data.error ?? 'Payment setup failed.');
-  //
-  //     const { error, paymentIntent } = await stripe.confirmCardPayment(data.clientSecret, {
-  //       payment_method: {
-  //         card: cardEl as any,
-  //         billing_details: { email },
-  //       },
-  //     });
-  //
-  //     if (error) {
-  //       setCardError(error.message ?? 'Payment failed.');
-  //       setProcessing(false);
-  //       return;
-  //     }
-  //
-  //     if (paymentIntent?.status === 'succeeded') {
-  //       onSuccess();
-  //     }
-  //   } catch (err) {
-  //     setCardError((err as Error).message ?? 'Payment failed. Please try again.');
-  //     setProcessing(false);
-  //   }
-  // };
+  const handlePay = async () => {
+    const stripe = stripeRef.current;
+    const cardEl = cardElRef.current;
+    if (!stripe || !cardEl) return;
+  
+    setProcessing(true);
+    setCardError('');
+  
+    try {
+      const res  = await fetch(PAYMENT_INTENT_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ amount: Math.round(total * 100) }),
+      });
+      const data = await res.json() as { clientSecret?: string; error?: string };
+  
+      if (!data.clientSecret) throw new Error(data.error ?? 'Payment setup failed.');
+  
+      const { error, paymentIntent } = await stripe.confirmCardPayment(data.clientSecret, {
+        payment_method: {
+          card: cardEl as any,
+          billing_details: { email },
+        },
+      });
+  
+      if (error) {
+        setCardError(error.message ?? 'Payment failed.');
+        setProcessing(false);
+        return;
+      }
+  
+      if (paymentIntent?.status === 'succeeded') {
+        onSuccess();
+      }
+    } catch (err) {
+      setCardError((err as Error).message ?? 'Payment failed. Please try again.');
+      setProcessing(false);
+    }
+  };
 
   const inputBoxStyle = {
     background: 'rgba(255,255,255,0.05)',
