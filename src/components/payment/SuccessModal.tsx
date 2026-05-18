@@ -30,7 +30,7 @@ export default function SuccessModal({ email, onClose }: Props) {
         <p className="text-white/65 text-[0.92rem] leading-[1.7] mb-1.5">
           Payment successful. We are already getting to work on your ad creative.
         </p>
-        <p className="text-white/40 text-[0.8rem] mb-7">
+        <p className="text-white/60 text-[0.8rem] mb-7">
           Confirmation sent to <strong className="text-white">{email}</strong>
         </p>
         <p className="font-mono text-[0.72rem] tracking-[0.08em] text-white/25 mb-6">

@@ -29,7 +29,7 @@ const STEPS = [
 
 function Tag({ label }: { label: string }) {
   return (
-    <span className="bg-white/5 border border-white/[0.07] rounded-sm text-[0.68rem] font-mono tracking-[0.08em] px-[10px] py-1 text-white/45 uppercase">
+    <span className="bg-white/5 border border-white/[0.07] rounded-sm text-[0.68rem] font-mono tracking-[0.08em] px-[10px] py-1 text-white/60 uppercase">
       {label}
     </span>
   );
@@ -52,7 +52,7 @@ export default function Process() {
         >
           From Scratch to Your<br />Winning Ad in Hours
         </h2>
-        <p className="reveal text-[1rem] text-white/45 max-w-[480px] font-light">
+        <p className="reveal text-[1rem] text-white/60 max-w-[480px] font-light">
           Four simple steps. No back-and-forth, no delays. Just results.
         </p>
       </div>
@@ -126,7 +126,7 @@ function Step({ step, last }: { step: typeof STEPS[0]; last: boolean }) {
       </div>
       <div>
         <div className="font-display text-[1.5rem] tracking-[0.03em] mb-2">{step.title}</div>
-        <p className="text-[0.9rem] text-white/45 leading-[1.7] font-light">{step.body}</p>
+        <p className="text-[0.9rem] text-white/60 leading-[1.7] font-light">{step.body}</p>
         {step.tags.length > 0 && (
           <div className="flex flex-wrap gap-[6px] mt-3">
             {step.tags.map((tag) => <Tag key={tag} label={tag} />)}

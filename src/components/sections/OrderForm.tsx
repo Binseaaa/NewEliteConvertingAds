@@ -102,7 +102,7 @@ export default function OrderForm({ selectedPackage }: Props) {
           <h2 className="font-display leading-none tracking-[0.01em] mb-4 text-white" style={{ fontSize: 'clamp(2.4rem, 4.5vw, 3.8rem)' }}>
             Let's Make Your<br />Product Go Trending
           </h2>
-          <p className="text-[1rem] text-white/45 max-w-[480px] font-light mx-auto">
+          <p className="text-[1rem] text-white/60 max-w-[480px] font-light mx-auto">
             Fill in your product details below and we'll start crafting your winning ad immediately.
           </p>
         </div>
@@ -114,7 +114,7 @@ export default function OrderForm({ selectedPackage }: Props) {
 
             {/* Product Name */}
             <div className="flex flex-col gap-2">
-              <label className="text-[0.7rem] font-mono tracking-[0.12em] uppercase text-white/45">Product Name / Site *</label>
+              <label className="text-[0.7rem] font-mono tracking-[0.12em] uppercase text-white/60">Product Name / Site *</label>
               <input
                 type="text" required placeholder="e.g. ArcLight Phone Holder"
                 value={formData.productName}
@@ -125,7 +125,7 @@ export default function OrderForm({ selectedPackage }: Props) {
 
             {/* Email */}
             <div className="flex flex-col gap-2">
-              <label className="text-[0.7rem] font-mono tracking-[0.12em] uppercase text-white/45">Your Email *</label>
+              <label className="text-[0.7rem] font-mono tracking-[0.12em] uppercase text-white/60">Your Email *</label>
               <input
                 type="email" required placeholder="you@email.com"
                 value={formData.email}
@@ -136,7 +136,7 @@ export default function OrderForm({ selectedPackage }: Props) {
 
             {/* Ad Format */}
             <div className="flex flex-col gap-2">
-              <label className="text-[0.7rem] font-mono tracking-[0.12em] uppercase text-white/45">Ad Format *</label>
+              <label className="text-[0.7rem] font-mono tracking-[0.12em] uppercase text-white/60">Ad Format *</label>
               <select
                 required
                 aria-label="Ad Format"
@@ -153,7 +153,7 @@ export default function OrderForm({ selectedPackage }: Props) {
 
             {/* Package */}
             <div className="flex flex-col gap-2">
-              <label className="text-[0.7rem] font-mono tracking-[0.12em] uppercase text-white/45">Package *</label>
+              <label className="text-[0.7rem] font-mono tracking-[0.12em] uppercase text-white/60">Package *</label>
               <select
                 required
                 aria-label="Package"
@@ -170,7 +170,7 @@ export default function OrderForm({ selectedPackage }: Props) {
 
             {/* Description */}
             <div className="flex flex-col gap-2 md:col-span-2">
-              <label className="text-[0.7rem] font-mono tracking-[0.12em] uppercase text-white/45">Product Description / Notes *</label>
+              <label className="text-[0.7rem] font-mono tracking-[0.12em] uppercase text-white/60">Product Description / Notes *</label>
               <textarea
                 required
                 value={formData.description}
@@ -183,7 +183,7 @@ export default function OrderForm({ selectedPackage }: Props) {
 
           {/* Uploads */}
           <div className="space-y-3">
-            <label className="text-[0.7rem] font-mono tracking-[0.12em] uppercase text-white/45">
+            <label className="text-[0.7rem] font-mono tracking-[0.12em] uppercase text-white/60">
               Product Image & Logo (Optional)
             </label>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -207,7 +207,7 @@ export default function OrderForm({ selectedPackage }: Props) {
                   </div>
                 )}
                 <div className="text-white text-sm">Product Image</div>
-                <div className="text-white/40 text-xs mt-1">Drag & drop or click to upload</div>
+                <div className="text-white/60 text-xs mt-1">Drag & drop or click to upload</div>
               </div>
 
               {/* Brand Logo */}
@@ -229,14 +229,14 @@ export default function OrderForm({ selectedPackage }: Props) {
                   </div>
                 )}
                 <div className="text-white text-sm">Brand Logo</div>
-                <div className="text-white/40 text-xs mt-1">Drag & drop or click to upload</div>
+                <div className="text-white/60 text-xs mt-1">Drag & drop or click to upload</div>
               </div>
             </div>
           </div>
 
           {/* Extras */}
           <div className="space-y-3">
-            <p className="text-[0.7rem] font-mono tracking-[0.12em] uppercase text-white/45">Extras (Optional)</p>
+            <p className="text-[0.7rem] font-mono tracking-[0.12em] uppercase text-white/60">Extras (Optional)</p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
 
               {/* Voiceover */}
@@ -327,7 +327,7 @@ export default function OrderForm({ selectedPackage }: Props) {
             {submitting ? 'Preparing payment...' : 'Submit My Order →'}
           </button>
 
-          <p className="text-[0.75rem] text-white/45 text-center">
+          <p className="text-[0.75rem] text-white/60 text-center">
             We'll confirm your order within a few hours and begin production immediately. ⚡
           </p>
         </form>

@@ -135,7 +135,7 @@ export default function PaymentModal({
         <button
           onClick={onClose}
           disabled={processing}
-          className="absolute top-3.5 right-4 text-white/40 text-xl leading-none bg-transparent border-none cursor-pointer hover:text-white/70 disabled:opacity-0 disabled:pointer-events-none"
+          className="absolute top-3.5 right-4 text-white/60 text-xl leading-none bg-transparent border-none cursor-pointer hover:text-white/70 disabled:opacity-0 disabled:pointer-events-none"
         >
           ✕
         </button>
@@ -160,7 +160,7 @@ export default function PaymentModal({
             <span className="text-[0.88rem] text-white/65">{packageLabel}</span>
           </div>
           {extras && extras !== 'None' && (
-            <div className="mt-2 text-[0.78rem] text-white/45 leading-[1.4]">
+            <div className="mt-2 text-[0.78rem] text-white/60 leading-[1.4]">
               <span className="font-mono tracking-[0.1em] uppercase">Extras: </span>
               <div className="mt-1">{extras}</div>
             </div>

@@ -44,7 +44,7 @@ export default function WhyUs() {
           >
             Your Winning Ad<br />Is Here.
           </h2>
-          <p className="text-[1rem] text-white/45 max-w-[520px] font-light">
+          <p className="text-[1rem] text-white/60 max-w-[520px] font-light">
             Every ad is built from scratch using proven ecommerce frameworks — designed to stop the scroll and drive real conversions.
           </p>
 
@@ -54,7 +54,7 @@ export default function WhyUs() {
                 <div className="w-5 h-5 mt-1 rounded-full bg-accent/10 border border-accent/40 flex items-center justify-center text-[0.6rem] text-accent flex-shrink-0">
                   ✓
                 </div>
-                <p className="text-[0.9rem] text-white/45 leading-[1.6]">
+                <p className="text-[0.9rem] text-white/60 leading-[1.6]">
                   <strong className="text-white font-medium">{title}</strong> {body}
                 </p>
               </div>
@@ -71,7 +71,7 @@ export default function WhyUs() {
             <div key={title} className="bg-card p-6 md:p-8 transition hover:bg-[#1a1a1a]">
               <div className="text-[1.5rem] mb-3">{emoji}</div>
               <div className="font-display text-[1.1rem] mb-2">{title}</div>
-              <p className="text-[0.82rem] text-white/45 leading-[1.7]">{body}</p>
+              <p className="text-[0.82rem] text-white/60 leading-[1.7]">{body}</p>
             </div>
           ))}
         </div>
