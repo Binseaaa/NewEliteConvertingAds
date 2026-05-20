@@ -8,8 +8,13 @@ interface Props {
 export default function VideoCard({ video }: Props) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(false);
+  const [iframeActive, setIframeActive] = useState(false);
 
   const toggle = () => {
+    if (video.iframe) {
+      setIframeActive(true);
+      return;
+    }
     const v = videoRef.current;
     if (!v) return;
     if (v.paused) { v.play(); setPlaying(true); }
@@ -17,6 +22,10 @@ export default function VideoCard({ video }: Props) {
   };
 
   const aspectClass = video.aspect === '9/16' ? 'aspect-[9/16]' : 'aspect-square';
+
+  // Extract YouTube video ID from iframe string
+  const ytId = video.iframe?.match(/embed\/([a-zA-Z0-9_-]+)/)?.[1];
+  const ytThumbnail = ytId ? `https://i.ytimg.com/vi/${ytId}/maxresdefault.jpg` : video.img;
 
   return (
     <div
@@ -31,38 +40,80 @@ export default function VideoCard({ video }: Props) {
         style={{ filter: 'blur(3px)', transform: 'scale(1.05)' }}
       />
 
-      {/* Video */}
-      <video
-        ref={videoRef}
-        className="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500"
-        loop
-        playsInline
-        preload="metadata"
-        onLoadedData={(e) => (e.currentTarget.classList.remove('opacity-0'))}
-      >
-        <source src={`${video.src}#t=0.1`} type="video/mp4" />
-      </video>
+      {/* iframe */}
+      {video.iframe ? (
+        <>
+          {iframeActive && (
+            <div
+              className="absolute inset-0 w-full h-full [&>iframe]:w-full [&>iframe]:h-full [&>iframe]:border-0"
+              dangerouslySetInnerHTML={{ __html: video.iframe }}
+            />
+          )}
 
-      {/* Play overlay */}
-      <div
-        className="play-overlay absolute inset-0 flex items-center justify-center transition-opacity duration-200"
-        style={{
-          background: 'rgba(8,8,8,0.35)',
-          opacity: playing ? 0 : 1,
-        }}
-      >
-        <div
-          className="w-14 h-14 rounded-full flex items-center justify-center transition-transform duration-200 group-hover:scale-110"
-          style={{
-            background: 'rgba(200,245,58,0.15)',
-            border: '1.5px solid rgba(200,245,58,0.6)',
-          }}
-        >
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="#c8f53a" style={{ marginLeft: 3 }}>
-            <polygon points="5,3 19,12 5,21" />
-          </svg>
-        </div>
-      </div>
+          {/* Thumbnail + custom play button (hides once clicked) */}
+          {!iframeActive && (
+            <div className="absolute inset-0 w-full h-full">
+              <img
+                src={ytThumbnail}
+                alt={video.title}
+                className="w-full h-full object-cover"
+              />
+              {/* Play overlay */}
+              <div
+                className="absolute inset-0 flex items-center justify-center"
+                style={{ background: 'rgba(8,8,8,0.35)' }}
+              >
+                <div
+                  className="w-14 h-14 rounded-full flex items-center justify-center transition-transform duration-200 group-hover:scale-110"
+                  style={{
+                    background: 'rgba(200,245,58,0.15)',
+                    border: '1.5px solid rgba(200,245,58,0.6)',
+                  }}
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="#c8f53a" style={{ marginLeft: 3 }}>
+                    <polygon points="5,3 19,12 5,21" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          )}
+        </>
+      ) : (
+        <>
+          {/* Native video */}
+          <video
+            ref={videoRef}
+            className="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500"
+            loop
+            playsInline
+            preload="metadata"
+            onLoadedData={(e) => (e.currentTarget.classList.remove('opacity-0'))}
+          >
+            <source src={`${video.src}#t=0.1`} type="video/mp4" />
+          </video>
+
+          {/* Play overlay */}
+          <div
+            className="play-overlay absolute inset-0 flex items-center justify-center transition-opacity duration-200"
+            style={{
+              background: 'rgba(8,8,8,0.35)',
+              opacity: playing ? 0 : 1,
+            }}
+          >
+            <div
+              className="w-14 h-14 rounded-full flex items-center justify-center transition-transform duration-200 group-hover:scale-110"
+              style={{
+                background: 'rgba(200,245,58,0.15)',
+                border: '1.5px solid rgba(200,245,58,0.6)',
+              }}
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="#c8f53a" style={{ marginLeft: 3 }}>
+                <polygon points="5,3 19,12 5,21" />
+              </svg>
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 }
