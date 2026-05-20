@@ -4,21 +4,23 @@ export default {
   theme: {
     extend: {
       colors: {
-        black:      '#080808',
-        'off-black':'#101010',
-        card:       '#141414',
-        white:      '#f5f5f0',
-        muted:      'rgba(245,245,240,0.45)',
-        accent:     '#c8f53a',
-        accent2:    '#3affa3',
+        black: '#080808',
+        'off-black': '#101010',
+        card: '#141414',
+        white: '#f5f5f0',
+        muted: 'rgba(245,245,240,0.45)',
+        accent: '#c8f53a',
+        accent2: '#3affa3',
         'accent-glow': 'rgba(200,245,58,0.18)',
-        border:     'rgba(255,255,255,0.07)',
+        border: 'rgba(255,255,255,0.07)',
       },
+
       fontFamily: {
-        display: ['"Bebas Neue"', 'sans-serif'],
-        body:    ['"DM Sans"',    'sans-serif'],
-        mono:    ['"Space Mono"', 'monospace'],
+        display: ['Bebas Neue', 'sans-serif'],
+        body: ['DM Sans', 'sans-serif'],
+        mono: ['Space Mono', 'monospace'],
       },
+
       keyframes: {
         pulseGlow: {
           '0%,100%': { opacity: '0.7', transform: 'scale(1)' },

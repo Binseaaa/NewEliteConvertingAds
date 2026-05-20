@@ -12,9 +12,9 @@ export default function Hero() {
         style={{ animation: 'fadeInUp 1s ease-out' }}
       >
         {/* Badge */}
-        <div className="inline-flex items-center gap-2 bg-accent/10 border border-accent/30 rounded-full px-4 py-2 font-mono text-[0.7rem] tracking-widest uppercase text-accent mb-6">
+        <div className="font-display inline-flex items-center gap-2 bg-accent/10 border border-accent/30 rounded-full px-4 py-2 font-mono text-[0.7rem] tracking-widest uppercase text-accent mb-6">
           <span className="w-2 h-2 rounded-full bg-accent animate-dotPulse" />
-          Now Accepting Orders
+          NOW ACCEPTING ORDERS
         </div>
 
         {/* Heading */}
@@ -22,8 +22,8 @@ export default function Hero() {
           className="font-display text-white mb-5 leading-[0.95]"
           style={{ fontSize: 'clamp(2.6rem, 6vw, 5.8rem)' }}
         >
-          Ads Designed to
-          <span className="text-accent block">Convert & Scale</span>
+          ADS DESIGNED TO
+          <span className="text-accent block font-display">CONVERT & SCALE</span>
         </h1>
 
         {/* Subtext */}
