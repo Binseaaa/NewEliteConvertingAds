@@ -88,6 +88,12 @@ export default function PaymentModal({
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ amount: Math.round(total * 100) }),
       });
+
+      if (!res.ok) {
+        const text = await res.text();
+        throw new Error(`Server error ${res.status}: ${text.slice(0, 200)}`);
+      }
+      
       const data = await res.json() as { clientSecret?: string; error?: string };
   
       if (!data.clientSecret) throw new Error(data.error ?? 'Payment setup failed.');

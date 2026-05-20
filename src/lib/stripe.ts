@@ -7,7 +7,7 @@ const STRIPE_PK = import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY as string ||
 export const stripePromise = loadStripe(STRIPE_PK);
 
 export const PAYMENT_INTENT_URL =
-  import.meta.env.VITE_PAYMENT_INTENT_URL || 'netlify/functions/create-payment-intent.js';
+  import.meta.env.VITE_PAYMENT_INTENT_URL || '/.netlify/functions/create-payment-intent';
 
 export const GOOGLE_SCRIPT_URL =
   import.meta.env.VITE_GOOGLE_SCRIPT_URL ||
