@@ -162,6 +162,7 @@ export default function OrderForm({ selectedPackage }: Props) {
                 className="cursor-pointer appearance-none bg-[#1a1a1a] border border-white/[0.07] rounded px-3 py-2 text-sm text-white focus:border-accent/50 outline-none"
               >
                 <option value="" disabled>Select package</option>
+                <option value="test">Test Package — $1</option>
                 <option value="starter">Starter — $100</option>
                 <option value="growth">Growth — $250</option>
                 <option value="elite">Elite — $500</option>

@@ -5,8 +5,6 @@ const CARD_W = 240;
 const GAP = 20;
 const SPEED = 0.5;
 
-type CarouselCard = HTMLDivElement & { _vid: HTMLVideoElement; _vidSrc: string; _loaded: boolean };
-
 export default function Carousel() {
   const outerRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
@@ -16,57 +14,32 @@ export default function Carousel() {
     const track = trackRef.current;
     if (!outer || !track) return;
 
-    // Store as non-null typed locals so nested functions don't lose the type narrowing
     const outerEl = outer as HTMLDivElement;
     const trackEl = track as HTMLDivElement;
 
     trackEl.innerHTML = '';
 
-    function makeCard(data: { img: string; src: string }): CarouselCard {
-      const div = document.createElement('div') as CarouselCard;
+    function makeCard(data: { img: string; title: string }): HTMLDivElement {
+      const div = document.createElement('div');
       div.style.cssText =
         'width:240px;height:380px;flex-shrink:0;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,0.1);position:relative;background:#111;';
 
-      const thumb = document.createElement('img');
-      thumb.src = data.img;
-      thumb.loading = 'eager';
-      thumb.decoding = 'async';
-      thumb.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;filter:blur(4px);transform:scale(1.05);';
-      div.appendChild(thumb);
+      const img = document.createElement('img');
+      img.src = data.img;
+      img.alt = data.title;
+      img.loading = 'eager';
+      img.decoding = 'async';
+      img.style.cssText =
+        'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;';
 
-      const vid = document.createElement('video');
-      vid.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 0.6s ease;';
-      vid.autoplay = true;
-      vid.muted = true;
-      vid.preload = 'none';
-      vid.setAttribute('playsinline', '');
-
-      const MAX_PREVIEW_TIME = 5;
-
-      function loopPreview() {
-        if (vid.currentTime >= MAX_PREVIEW_TIME) {
-          vid.currentTime = 0;
-          vid.play().catch(() => {});
-        }
-        vid.requestVideoFrameCallback(loopPreview);
-      }
-
-      vid.requestVideoFrameCallback(loopPreview);
-      vid.addEventListener('canplay', function (this: HTMLVideoElement) { this.style.opacity = '1'; thumb.style.filter = 'none'; thumb.style.transform = 'none';  }, { once: true });
-      div.appendChild(vid);
-
-      div._vid = vid;
-      div._vidSrc = data.src;
-      div._loaded = false;
+      div.appendChild(img);
       return div;
     }
 
-    const allCards: CarouselCard[] = [];
+    // Triple the set for seamless infinite loop
     for (let s = 0; s < 3; s++) {
       CAROUSEL_VIDEOS.forEach((d) => {
-        const card = makeCard(d);
-        trackEl.appendChild(card);
-        allCards.push(card);
+        trackEl.appendChild(makeCard(d));
       });
     }
 
@@ -85,30 +58,12 @@ export default function Carousel() {
       if (pos < 0) pos += setWidth;
     }
 
-    const VIEWPORT_W = window.innerWidth;
-
-    function loadNearbyVideos() {
-      allCards.forEach((card, i) => {
-        if (card._loaded) return;
-        const cardLeft = i * (CARD_W + GAP) - pos;
-        if (cardLeft > -(CARD_W * 2) && cardLeft < VIEWPORT_W + CARD_W * 2) {
-          card._loaded = true;
-          card._vid.src = card._vidSrc;
-          card._vid.load();
-          if (cardLeft > 0 && cardLeft < VIEWPORT_W) {
-            card._vid.play().catch(() => {});
-          }
-        }
-      });
-    }
-
     function loop() {
       if (autoOn && !isDrag) {
         pos += SPEED;
         clampPos();
         trackEl.style.transform = `translateX(-${pos}px)`;
       }
-      loadNearbyVideos();
       rafId = requestAnimationFrame(loop);
     }
     rafId = requestAnimationFrame(loop);
