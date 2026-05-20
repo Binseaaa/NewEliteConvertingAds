@@ -94,23 +94,16 @@ export default function Process() {
 
             <div className="text-accent text-xs tracking-[0.2em]">HIGH CONVERTING AD</div>
 
-            <div className="relative w-full max-w-[220px] aspect-[9/16] rounded-xl overflow-hidden border border-white/10 bg-black">
-              <video
-                className="w-full h-full object-cover opacity-0 transition-opacity duration-500"
-                autoPlay
-                controls
-                muted
-                loop
-                playsInline
-                preload="metadata"
-                onCanPlay={(e) => e.currentTarget.classList.remove('opacity-0')}
-              >
-                <source
-                  src="https://res.cloudinary.com/dobxpxy6x/video/upload/Mini_Shaver_nmnh8c.mp4#t=0.1"
-                  type="video/mp4"
-                />
-              </video>
-            </div>
+          <div className="relative w-full max-w-[220px] aspect-[9/16] rounded-xl overflow-hidden border border-white/10 bg-black">
+            <iframe
+              className="w-full h-full"
+              src="https://www.youtube.com/embed/ksLz0DX6GvE?autoplay=1&mute=1&playsinline=1&loop=1&playlist=ksLz0DX6GvE&vq=hd1080"
+              title="Mini Shaver"
+              frameBorder="0"
+              allow="autoplay; encrypted-media; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
 
           </div>
         </div>
