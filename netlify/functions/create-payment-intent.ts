@@ -1,6 +1,7 @@
-const Stripe = require('stripe');
+import Stripe from 'stripe';
+import { Handler, HandlerEvent } from '@netlify/functions';
 
-exports.handler = async (event) => {
+export const handler: Handler = async (event: HandlerEvent) => {
   // Handle CORS preflight
   if (event.httpMethod === 'OPTIONS') {
     return {
@@ -24,7 +25,6 @@ exports.handler = async (event) => {
   };
 
   try {
-    // Check secret key exists
     if (!process.env.STRIPE_SECRET_KEY) {
       return {
         statusCode: 500,
@@ -33,12 +33,12 @@ exports.handler = async (event) => {
       };
     }
 
-    const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
+    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
-    let body;
+    let body: { amount?: number };
     try {
-      body = JSON.parse(event.body);
-    } catch(e) {
+      body = JSON.parse(event.body ?? '{}');
+    } catch (e) {
       return {
         statusCode: 400,
         headers,
@@ -48,7 +48,6 @@ exports.handler = async (event) => {
 
     const amount = body.amount;
 
-    // Stripe minimum is 50 cents
     if (!amount || amount < 50) {
       return {
         statusCode: 400,
@@ -58,7 +57,7 @@ exports.handler = async (event) => {
     }
 
     const paymentIntent = await stripe.paymentIntents.create({
-      amount:   Math.round(amount),
+      amount: Math.round(amount),
       currency: 'usd',
       automatic_payment_methods: { enabled: true },
     });
@@ -70,10 +69,11 @@ exports.handler = async (event) => {
     };
 
   } catch (err) {
+    const message = err instanceof Error ? err.message : 'An unexpected error occurred.';
     return {
       statusCode: 500,
       headers,
-      body: JSON.stringify({ error: err.message })
+      body: JSON.stringify({ error: message })
     };
   }
 };
