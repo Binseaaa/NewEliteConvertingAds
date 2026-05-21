@@ -59,7 +59,7 @@ export const handler: Handler = async (event: HandlerEvent) => {
     const paymentIntent = await stripe.paymentIntents.create({
       amount: Math.round(amount),
       currency: 'usd',
-      automatic_payment_methods: { enabled: true },
+      payment_method_types: ['card'],
     });
 
     return {
