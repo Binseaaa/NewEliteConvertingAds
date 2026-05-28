@@ -129,7 +129,7 @@ export default function PaymentModal({
 
   return (
     <div
-      className="fixed inset-0 z-[2147483647] flex items-center justify-center p-5 overflow-y-auto"
+      className="fixed inset-0 flex items-center justify-center p-5 overflow-y-auto"
       style={{ background: 'rgba(8,8,8,0.75)', backdropFilter: 'blur(6px)' }}
       onClick={(e) => { if (!processing && e.target === e.currentTarget) onClose(); }}
     >
