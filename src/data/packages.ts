@@ -2,19 +2,6 @@ import type { Package } from '../types';
 
 export const PACKAGES: Package[] = [
   {
-    id: 'test',
-    name: 'Test',
-    tagline: 'Stripe payment testing package.',
-    price: 1,
-    deliveryTime: 'Instant',
-    features: [
-      'Stripe payment test',
-      'Webhook test',
-      'Google Sheets test',
-    ],
-    videoCount: 'TEST PACKAGE',
-  },
-  {
     id: 'starter',
     name: 'Starter',
     tagline: 'One format, one winning ad.',
@@ -64,7 +51,6 @@ export const PACKAGES: Package[] = [
 ];
 
 export const PACKAGE_PRICES: Record<string, number> = {
-  test: 1,
   starter: 100,
   growth: 250,
   elite: 500,

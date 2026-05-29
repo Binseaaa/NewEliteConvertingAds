@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect  } from 'react';
 import { useReveal } from '../../hooks/useReveal';
 import { useOrderForm } from '../../hooks/useOrderForm';
 import SectionLabel from '../ui/SectionLabel';
@@ -28,7 +28,11 @@ export default function OrderForm({ selectedPackage }: Props) {
   const [logoPreview, setLogoPreview]       = useState<string | null>(null);
 
   // Sync selected package from Packages section
-  const pkgValue = selectedPackage && !formData.package ? selectedPackage : formData.package;
+  useEffect(() => {
+    if (selectedPackage) updateField('package', selectedPackage);
+  }, [selectedPackage]);
+
+  const pkgValue = formData.package;
 
   const handleFileChange = (file: File | null, type: 'productImage' | 'brandLogo') => {
     if (!file) return;
@@ -147,7 +151,6 @@ export default function OrderForm({ selectedPackage }: Props) {
                 <option value="" disabled>Select format</option>
                 <option value="9:16">9:16 — TikTok / Stories / Reels</option>
                 <option value="1:1">1:1 — Meta Feed / Square</option>
-                <option value="both">Both (9:16 + 1:1)</option>
               </select>
             </div>
 
@@ -162,7 +165,6 @@ export default function OrderForm({ selectedPackage }: Props) {
                 className="cursor-pointer appearance-none bg-[#1a1a1a] border border-white/[0.07] rounded px-3 py-2 text-sm text-white focus:border-accent/50 outline-none"
               >
                 <option value="" disabled>Select package</option>
-                <option value="test">Test Package — $1</option>
                 <option value="starter">Starter — $100</option>
                 <option value="growth">Growth — $250</option>
                 <option value="elite">Elite — $500</option>
