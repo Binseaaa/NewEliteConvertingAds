@@ -17,7 +17,7 @@ export const TIKTOK_VIDEOS: VideoItem[] = [
   {
     id: '4mode-faucet',
     title: '4Mode Faucet',
-    img: 'https://res.cloudinary.com/drmpnuh83/image/upload/4Mode_Faucet_m2x5wg.png',
+    img: '/ASSETS/TikTok/4Mode Faucet.webp',
     src: '',
     iframe: makeIframe('tnSqPTFp4ko', '4Mode Faucet', 479, 852),
     aspect: '9/16',
@@ -26,7 +26,7 @@ export const TIKTOK_VIDEOS: VideoItem[] = [
   {
     id: 'ripsurf',
     title: 'RipSurf Skateboard',
-    img: 'https://res.cloudinary.com/drmpnuh83/image/upload/surfing_nblxz5.png',
+    img: 'ASSETS/TikTok/surfing.webp',
     src: '',
     iframe: makeIframe('1METwZVTdr4', 'RipSurf Skateboard', 479, 852),
     aspect: '9/16',
@@ -35,7 +35,7 @@ export const TIKTOK_VIDEOS: VideoItem[] = [
   {
     id: 'mosquito-bracelet',
     title: 'Mosquito Bracelet',
-    img: 'https://res.cloudinary.com/drmpnuh83/image/upload/Mosquito_Bracelet_b9gyb2.png',
+    img: 'ASSETS/TikTok/Mosquito Bracelet .webp',
     src: '',
     iframe: makeIframe('Y0Sm0erPUxQ', 'Mosquito Bracelet', 479, 852),
     aspect: '9/16',
@@ -44,7 +44,7 @@ export const TIKTOK_VIDEOS: VideoItem[] = [
   {
     id: 'waterproof-phone',
     title: 'Waterproof Phone Holder',
-    img: 'https://res.cloudinary.com/drmpnuh83/image/upload/Water_Proof_PhoneHolder_csmtmt.png',
+    img: 'ASSETS/TikTok/Water Proof PhoneHolder.webp',
     src: '',
     iframe: makeIframe('EKPoBKpOs4c', 'Water Proof PhoneHolder', 479, 852),
     aspect: '9/16',
@@ -53,7 +53,7 @@ export const TIKTOK_VIDEOS: VideoItem[] = [
   {
     id: 'facemask-machine',
     title: 'Wholefacemask Machine',
-    img: 'https://res.cloudinary.com/drmpnuh83/image/upload/Wholefacemask_Maker_Machine_n5xr7o.png',
+    img: 'ASSETS/TikTok/Wholefacemask Maker Machine.webp',
     src: '',
     iframe: makeIframe('KJYzpGujX9o', 'Wholefacemask Maker Machine', 479, 852),
     aspect: '9/16',
@@ -62,7 +62,7 @@ export const TIKTOK_VIDEOS: VideoItem[] = [
   {
     id: 'shoe-cleaner',
     title: 'Shoe Cleaner',
-    img: 'https://res.cloudinary.com/drmpnuh83/image/upload/Shoe_Cleaner_ipmecv.png',
+    img: 'ASSETS/TikTok/Shoe Cleaner.webp',
     src: '',
     iframe: makeIframe('rIPqaa9bejc', 'Shoe Cleaner', 479, 852),
     aspect: '9/16',
@@ -74,7 +74,7 @@ export const META_VIDEOS: VideoItem[] = [
   {
     id: 'intense-pulsed-light',
     title: 'Intense Pulsed Light',
-    img: 'https://res.cloudinary.com/drmpnuh83/image/upload/Intense_Pulsed_Light_-_101_pga9ff.png',
+    img: 'ASSETS/Meta Ads/Intense Pulsed Light - 101.webp',
     src: '',
     iframe: makeIframe('HqdRVE4NiNw', 'Intense Pulsed Light', 852, 852),
     aspect: '1/1',
@@ -83,7 +83,7 @@ export const META_VIDEOS: VideoItem[] = [
   {
     id: 'robot',
     title: 'Robot',
-    img: 'https://res.cloudinary.com/drmpnuh83/image/upload/Robot_-_101_e6z5jo.png',
+    img: 'ASSETS/Meta Ads/Robot - 101.webp',
     src: '',
     iframe: makeIframe('SefQKfdHQ3Q', 'Robot Companion', 852, 852),
     aspect: '1/1',
@@ -92,7 +92,7 @@ export const META_VIDEOS: VideoItem[] = [
   {
     id: 'triple-monitor',
     title: 'Triple Monitor',
-    img: 'https://res.cloudinary.com/drmpnuh83/image/upload/Triple_Monitor_-_101_fpjv8x.png',
+    img: 'ASSETS/Meta Ads/Triple Monitor - 101.webp',
     src: '',
     iframe: makeIframe('i-dCNcvyi5o', 'Triple Monitor', 852, 852),
     aspect: '1/1',
@@ -101,7 +101,7 @@ export const META_VIDEOS: VideoItem[] = [
   {
     id: 'a-maze-ball',
     title: 'A-Maze Ball',
-    img: 'https://res.cloudinary.com/drmpnuh83/image/upload/A_Maze_Ball_i7cln0.png',
+    img: 'ASSETS/Meta Ads/A Maze Ball.webp',
     src: '',
     iframe: makeIframe('STRRFLww3Ws', 'A-Maze Ball', 852, 852),
     aspect: '1/1',
@@ -110,7 +110,7 @@ export const META_VIDEOS: VideoItem[] = [
   {
     id: 'lint-remover',
     title: 'Lint Remover',
-    img: 'https://res.cloudinary.com/drmpnuh83/image/upload/Lint_Remover_iopwqu.png',
+    img: 'ASSETS/Meta Ads/Lint Remover.webp',
     src: '',
     iframe: makeIframe('OwpDjaK52Mw', 'Lint Remover', 852, 852),
     aspect: '1/1',
@@ -119,7 +119,7 @@ export const META_VIDEOS: VideoItem[] = [
   {
     id: 'sunscreen-applicator',
     title: 'Sunscreen Applicator',
-    img: 'https://res.cloudinary.com/drmpnuh83/image/upload/Sunscreen_Applicator_ag5q8z.png',
+    img: 'ASSETS/Meta Ads/Sunscreen Applicator.webp',
     src: '',
     iframe: makeIframe('lYRavOIoj3c', 'Sunscreen Applicator', 852, 852),
     aspect: '1/1',
